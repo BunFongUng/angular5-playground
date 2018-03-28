@@ -1,0 +1,9 @@
+<td class="text-center">{{ index + 1 }}</td>
+<td class="text-center">{{ todo.text }}</td>
+<td class="text-center">
+  <div class="icons-container">
+    <span class="icons">
+      <i class="fa fa-trash" aria-hidden="true" (click)="handleClickDelete(index)"></i>
+    </span>
+  </div>
+</td>
