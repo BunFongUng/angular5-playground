@@ -1,3 +1,18 @@
-<p>
-  todo-form works!
-</p>
+<div class="container margin-top-50">
+  <div class="row">
+    <div class="col-md-12">
+      <form #todoForm="ngForm" novalidate (ngSubmit)="handleFormSubmit(todoForm)">
+        <div class="form-group">
+          <label for="todoText">Todo Text</label>
+          <input type="text" class="form-control" name="todoText" id="todoText" #todoText="ngModel" [(ngModel)]="text" required>
+          <div class="row has-error">
+            <div class="col-md-12">
+              <small class="help-block" *ngIf="todoText.errors?.required && todoText.touched">Todo text is required.</small>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success form-control">Save</button>
+      </form>
+    </div>
+  </div>
+</div>
