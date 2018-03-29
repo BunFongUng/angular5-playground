@@ -1,15 +1,13 @@
-<div class="container margin-top-50">
-  <div class="row">
-    <div class="col-md-12">
-      <table class="table table-bordered">
-        <tr>
-          <th class="text-center">ID</th>
-          <th class="text-center">Text</th>
-          <th class="text-center">-</th>
-        </tr>
-        <tr *ngFor="let todo of todos; let index = index" app-todo [todo]="todo" [index]="index" (deleteEventEmit)="handleDelete($event)">
-        </tr>
-      </table>
-    </div>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-bordered">
+      <tr>
+        <th class="text-center">ID</th>
+        <th class="text-center">Text</th>
+        <th class="text-center">-</th>
+      </tr>
+      <tr *ngFor="let todo of todos; let index = index" app-todo [todo]="todo" [index]="index" (deleteEventEmit)="handleDelete($event)">
+      </tr>
+    </table>
   </div>
 </div>

@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from 'rxjs/observable';
 
 @Injectable()
 export class TodoService {
   todos: any[];
 
-  constructor() {
+  constructor(private fireBaseDB: AngularFireDatabase) {
     this.todos = [
       {
         text: 'Learn Angular 5'
@@ -23,5 +25,9 @@ export class TodoService {
 
   getTodos(): any[] {
     return this.todos;
+  }
+
+  getTodosFromFireBase(): Observable<any[]> {
+    return this.fireBaseDB.list('/todos').valueChanges();
   }
 }

@@ -7,6 +7,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class TodoFormComponent implements OnInit {
   @Output() addTodo = new EventEmitter<any>();
+  @Output() createNewTodo = new EventEmitter<Boolean>();
 
   text: string;
 
@@ -15,6 +16,7 @@ export class TodoFormComponent implements OnInit {
   handleFormSubmit({ value, valid }) {
     if (valid) {
       console.log(value);
+      this.createNewTodo.emit(false);
     }
   }
 

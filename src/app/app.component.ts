@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/observable';
+
+// load service
+import { TodoService } from './services/todo.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  showFormCreateTodo: Boolean = false;
+  todos: any[];
+
+  constructor(private todoService: TodoService) {
+    this.todoService.getTodosFromFireBase().subscribe(data => {
+      this.todos = data;
+    });
+  }
+
+  showFormCreate(event: Boolean) {
+    this.showFormCreateTodo = !this.showFormCreateTodo;
+  }
 }

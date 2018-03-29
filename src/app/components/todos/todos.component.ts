@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-
-// load services
-import { TodoService } from '../../services/todo.service';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-todos',
@@ -9,11 +6,9 @@ import { TodoService } from '../../services/todo.service';
   styleUrls: ['./todos.component.css']
 })
 export class TodosComponent implements OnInit {
-  todos: any[];
+  @Input() todos: any[];
 
-  constructor(public todoService: TodoService) {
-    this.todos = this.todoService.getTodos();
-  }
+  constructor() {}
 
   handleDelete(todoId: number) {
     this.todos.splice(todoId, 1);
