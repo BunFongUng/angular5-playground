@@ -15,7 +15,12 @@ export class AppComponent {
 
   constructor(private todoService: TodoService) {
     this.todoService.getTodosFromFireBase().subscribe(data => {
-      this.todos = data;
+      this.todos = data.map(item => {
+        return {
+          ...item.payload.toJSON(),
+          key: item.key
+        };
+      });
     });
   }
 

@@ -13,10 +13,14 @@ export class TodoService {
   }
 
   getTodosFromFireBase() {
-    return this.fireBaseDB.list('/todos').valueChanges();
+    return this.fireBaseDB.list('/todos').snapshotChanges();
   }
 
-  createNewTodo(todo: any) {
+  createNewTodo(todo: string) {
     return this.fireBaseDB.list('/todos').push(todo);
+  }
+
+  deleteTodo(key: string) {
+    return this.fireBaseDB.list('/todos').remove(key);
   }
 }

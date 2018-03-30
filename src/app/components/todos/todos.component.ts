@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
+import { TodoService } from '../../services/todo.service';
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
@@ -8,10 +9,10 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TodosComponent implements OnInit {
   @Input() todos: any[];
 
-  constructor() {}
+  constructor(private todoService: TodoService) {}
 
-  handleDelete(todoId: number) {
-    this.todos.splice(todoId, 1);
+  handleDelete(key: string) {
+    this.todoService.deleteTodo(key);
   }
 
   ngOnInit() {}
