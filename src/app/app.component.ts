@@ -38,4 +38,8 @@ export class AppComponent {
 
     this.todoService.createNewTodo(body);
   }
+
+  deleteTodo(key: string) {
+    this.todoService.deleteTodo(key);
+  }
 }

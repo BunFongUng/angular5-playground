@@ -6,6 +6,6 @@
       </button>
     </div>
   </div>
-  <app-todos *ngIf="!showFormCreateTodo" [todos]="todos"></app-todos>
+  <app-todos *ngIf="!showFormCreateTodo" [todos]="todos" (deleteTodo)="deleteTodo($event)"></app-todos>
   <app-todo-form *ngIf="showFormCreateTodo" (createNewTodo)="showFormCreate($event)" (addTodo)="createNewTodo($event)"></app-todo-form>
 </div>

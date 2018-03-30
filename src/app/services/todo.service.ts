@@ -8,15 +8,11 @@ export class TodoService {
 
   constructor(private fireBaseDB: AngularFireDatabase) {}
 
-  getTodos(): any[] {
-    return this.todos;
-  }
-
   getTodosFromFireBase() {
     return this.fireBaseDB.list('/todos').snapshotChanges();
   }
 
-  createNewTodo(todo: string) {
+  createNewTodo(todo: any) {
     return this.fireBaseDB.list('/todos').push(todo);
   }
 
