@@ -22,4 +22,15 @@ export class AppComponent {
   showFormCreate(event: Boolean) {
     this.showFormCreateTodo = !this.showFormCreateTodo;
   }
+
+  createNewTodo(todo: any) {
+    const todoId = this.todos.length + 1;
+
+    const body = {
+      id: todoId,
+      text: todo.todoText
+    };
+
+    this.todoService.createNewTodo(body);
+  }
 }
