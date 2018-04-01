@@ -8,4 +8,5 @@
   </div>
   <app-todos *ngIf="!showFormCreateTodo" [todos]="todos"></app-todos>
   <app-todo-form *ngIf="showFormCreateTodo" (createNewTodo)="showFormCreate($event)"></app-todo-form>
+  <app-posts></app-posts>
 </div>

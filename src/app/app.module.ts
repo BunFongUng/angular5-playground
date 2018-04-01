@@ -13,15 +13,25 @@ import { AppComponent } from './app.component';
 import { TodosComponent } from './components/todos/todos.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { TodoFormComponent } from './components/todo-form/todo-form.component';
+import { PostsComponent } from './components/posts/posts.component';
+import { PostComponent } from './components/post/post.component';
 
 // load services.
 import { TodoService } from './services/todo.service';
+import { PostService } from './services/post/post.service';
 
 // load env configs.
 import { environment } from '../environments/environment';
 
 @NgModule({
-  declarations: [AppComponent, TodosComponent, TodoComponent, TodoFormComponent],
+  declarations: [
+    AppComponent,
+    TodosComponent,
+    TodoComponent,
+    TodoFormComponent,
+    PostsComponent,
+    PostComponent
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -30,7 +40,7 @@ import { environment } from '../environments/environment';
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [TodoService],
+  providers: [TodoService, PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
