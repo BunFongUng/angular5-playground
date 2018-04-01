@@ -12,4 +12,8 @@ export class PostService {
   getPostList(): Observable<any> {
     return this.http.get(`${this.baseUrl}posts/list`);
   }
+
+  createNewPost(body: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}posts/create`, body);
+  }
 }

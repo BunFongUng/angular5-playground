@@ -22,6 +22,7 @@ import { PostService } from './services/post/post.service';
 
 // load env configs.
 import { environment } from '../environments/environment';
+import { PostFormComponent } from './components/post-form/post-form.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { environment } from '../environments/environment';
     TodoComponent,
     TodoFormComponent,
     PostsComponent,
-    PostComponent
+    PostComponent,
+    PostFormComponent
   ],
   imports: [
     BrowserModule,
