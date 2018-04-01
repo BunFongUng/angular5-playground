@@ -15,11 +15,31 @@ export class AppComponent {
 
   constructor(private todoService: TodoService) {
     this.todoService.getTodosFromFireBase().subscribe(data => {
-      this.todos = data;
+      this.todos = data.map(item => {
+        return {
+          ...item.payload.toJSON(),
+          key: item.key
+        };
+      });
     });
   }
 
   showFormCreate(event: Boolean) {
     this.showFormCreateTodo = !this.showFormCreateTodo;
+  }
+
+  createNewTodo(todo: any) {
+    const todoId = this.todos.length + 1;
+
+    const body = {
+      id: todoId,
+      text: todo.todoText
+    };
+
+    this.todoService.createNewTodo(body);
+  }
+
+  deleteTodo(key: string) {
+    this.todoService.deleteTodo(key);
   }
 }

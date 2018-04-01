@@ -15,7 +15,7 @@ export class TodoFormComponent implements OnInit {
 
   handleFormSubmit({ value, valid }) {
     if (valid) {
-      console.log(value);
+      this.addTodo.emit(value);
       this.createNewTodo.emit(false);
     }
   }

@@ -6,28 +6,17 @@ import { Observable } from 'rxjs/observable';
 export class TodoService {
   todos: any[];
 
-  constructor(private fireBaseDB: AngularFireDatabase) {
-    this.todos = [
-      {
-        text: 'Learn Angular 5'
-      },
-      {
-        text: 'Learn ReactJS'
-      },
-      {
-        text: 'Learn VueJS'
-      },
-      {
-        text: 'Learn NodeJS'
-      }
-    ];
+  constructor(private fireBaseDB: AngularFireDatabase) {}
+
+  getTodosFromFireBase() {
+    return this.fireBaseDB.list('/todos').snapshotChanges();
   }
 
-  getTodos(): any[] {
-    return this.todos;
+  createNewTodo(todo: any) {
+    return this.fireBaseDB.list('/todos').push(todo);
   }
 
-  getTodosFromFireBase(): Observable<any[]> {
-    return this.fireBaseDB.list('/todos').valueChanges();
+  deleteTodo(key: string) {
+    return this.fireBaseDB.list('/todos').remove(key);
   }
 }

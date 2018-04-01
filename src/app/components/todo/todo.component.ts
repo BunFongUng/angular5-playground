@@ -10,12 +10,12 @@ export class TodoComponent implements OnInit {
   @Input() todo: any;
   @Input() index: number;
 
-  @Output() deleteEventEmit = new EventEmitter<number>();
+  @Output() deleteEventEmit = new EventEmitter<string>();
 
   constructor() {}
 
-  handleClickDelete(todoId: number) {
-    this.deleteEventEmit.emit(todoId);
+  handleClickDelete(key: string) {
+    this.deleteEventEmit.emit(key);
   }
   ngOnInit() {}
 }
