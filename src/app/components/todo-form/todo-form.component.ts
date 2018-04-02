@@ -6,17 +6,17 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./todo-form.component.css']
 })
 export class TodoFormComponent implements OnInit {
-  @Output() addTodo = new EventEmitter<any>();
-  @Output() createNewTodo = new EventEmitter<Boolean>();
+  @Output() formSubmitEvent = new EventEmitter<any>();
+  @Output() formWasSubmittedEvent = new EventEmitter<Boolean>();
 
   text: string;
 
   constructor() {}
 
-  handleFormSubmit({ value, valid }) {
+  onFormSubmit({ value, valid }) {
     if (valid) {
-      this.addTodo.emit(value);
-      this.createNewTodo.emit(false);
+      this.formSubmitEvent.emit(value);
+      this.formWasSubmittedEvent.emit(false);
     }
   }
 

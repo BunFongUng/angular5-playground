@@ -16,17 +16,7 @@
     </ul>
   </div>
 </nav>
-<div class="container margin-top-50">
-  <!-- <div class="row form-group">
-    <div class="col-md-3">
-      <button type="button" class="form-control btn btn-primary" (click)="showFormCreate()">
-        {{ showFormCreateTodo ? 'Cancel' : 'Create Todo' }}
-      </button>
-    </div>
-  </div>
-  <app-todos *ngIf="!showFormCreateTodo" [todos]="todos" (deleteTodo)="deleteTodo($event)"></app-todos>
-  <app-todo-form *ngIf="showFormCreateTodo" (createNewTodo)="showFormCreate($event)" (addTodo)="createNewTodo($event)"></app-todo-form> -->
-  <!-- <app-posts></app-posts> -->
 
+<div class="container margin-top-50">
   <router-outlet></router-outlet>
 </div>

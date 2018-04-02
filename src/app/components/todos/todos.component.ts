@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { TodoService } from '../../services/todo.service';
 @Component({
@@ -7,14 +7,42 @@ import { TodoService } from '../../services/todo.service';
   styleUrls: ['./todos.component.css']
 })
 export class TodosComponent implements OnInit {
-  @Output() deleteTodo = new EventEmitter<string>();
-  @Input() todos: any[];
+  todos: any[];
+  showForm = false;
 
   constructor(private todoService: TodoService) {}
 
   handleDelete(key: string) {
-    this.deleteTodo.emit(key);
+    this.todoService.deleteTodo(key);
   }
 
-  ngOnInit() {}
+  toggleForm() {
+    this.showForm = !this.showForm;
+  }
+
+  handleFormSubmitted(formData: any) {
+    const todoId = this.todos.length + 1;
+
+    const body = {
+      id: todoId,
+      text: formData.todoText
+    };
+
+    this.todoService.createNewTodo(body);
+  }
+
+  handleFormWasSubmitted(value: boolean) {
+    this.showForm = value;
+  }
+
+  ngOnInit() {
+    this.todoService.getTodosFromFireBase().subscribe(data => {
+      this.todos = data.map(item => {
+        return {
+          ...item.payload.toJSON(),
+          key: item.key
+        };
+      });
+    });
+  }
 }

@@ -1,4 +1,12 @@
-<div class="row">
+<div class="row form-group">
+  <div class="col-md-3">
+    <button class="btn btn-primary form-control" (click)="toggleForm()">
+      {{ showForm ? 'Cancel Add Todo' : 'Add Todo' }}
+    </button>
+  </div>
+</div>
+
+<div class="row" *ngIf="!showForm">
   <div class="col-md-12">
     <table class="table table-bordered">
       <tr>
@@ -11,3 +19,5 @@
     </table>
   </div>
 </div>
+
+<app-todo-form *ngIf="showForm" (formSubmitEvent)="handleFormSubmitted($event)" (formWasSubmittedEvent)="handleFormWasSubmitted($event)"></app-todo-form>
