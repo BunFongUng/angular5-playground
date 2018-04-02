@@ -26,12 +26,21 @@ export class PostsComponent implements OnInit {
     this.showForm = !this.showForm;
   }
 
-  formWasSubmitted(data: boolean) {
+  handleFormWasSubmitted(data: boolean) {
     this.showForm = data;
   }
 
-  onFormSubmit(formData: any) {
+  handelFormSubmit(formData: any) {
     this.postService.createNewPost(formData).subscribe(res => {
+      if (res.status === 'success') {
+        this.getPostList();
+      }
+    });
+  }
+
+  handleDeletePost(id: string) {
+    this.postService.deletePost(id).subscribe(res => {
+      console.log(res);
       if (res.status === 'success') {
         this.getPostList();
       }

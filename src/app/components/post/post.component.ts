@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -7,10 +7,16 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
+  @Output() deletePostEvent = new EventEmitter<string>();
+
   @Input() index: number;
   @Input() post: any;
 
   constructor() {}
 
   ngOnInit() {}
+
+  handleDelete(id: string) {
+    this.deletePostEvent.emit(id);
+  }
 }

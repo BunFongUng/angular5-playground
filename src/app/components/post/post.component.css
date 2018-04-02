@@ -1,0 +1,8 @@
+.action-icons {
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.action-icons-delete {
+  color: red;
+}

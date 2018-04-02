@@ -21,10 +21,11 @@
         <th class="text-center">Title</th>
         <th class="text-center">Link</th>
         <th class="text-center">Votes </th>
+        <th class="text-center">-</th>
       </tr>
-      <tr *ngFor="let post of posts; let index = index" app-post [post]="post" [index]="index"></tr>
+      <tr *ngFor="let post of posts; let index = index" app-post [post]="post" [index]="index" (deletePostEvent)="handleDeletePost($event)"></tr>
     </table>
   </div>
 </div>
 
-<app-post-form *ngIf="showForm" (formWasSubmitted)="formWasSubmitted($event)" (createNewPost)="onFormSubmit($event)"></app-post-form>
+<app-post-form *ngIf="showForm" (formWasSubmitted)="handleFormWasSubmitted($event)" (createNewPost)="handelFormSubmit($event)"></app-post-form>
