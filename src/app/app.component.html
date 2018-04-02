@@ -1,3 +1,21 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <a routerLink="/">Home</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/todos">Todos</a>
+      </li>
+      <li routerLinkActive="active">
+        <a routerLink="/posts">Posts</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 <div class="container margin-top-50">
   <!-- <div class="row form-group">
     <div class="col-md-3">
@@ -8,5 +26,7 @@
   </div>
   <app-todos *ngIf="!showFormCreateTodo" [todos]="todos" (deleteTodo)="deleteTodo($event)"></app-todos>
   <app-todo-form *ngIf="showFormCreateTodo" (createNewTodo)="showFormCreate($event)" (addTodo)="createNewTodo($event)"></app-todo-form> -->
-  <app-posts></app-posts>
+  <!-- <app-posts></app-posts> -->
+
+  <router-outlet></router-outlet>
 </div>
