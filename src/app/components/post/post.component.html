@@ -16,4 +16,7 @@
 
 <td class="text-center">
   <i class="fa fa-trash-o action-icons action-icons-delete" (click)="handleDelete(post._id)" aria-hidden="true"></i>
+  <a [routerLink]="['/posts/edit/', post._id]">
+    <i class="fa fa-pencil-square-o action-icons action-icons-edit" aria-hidden="true"></i>
+  </a>
 </td>

@@ -24,4 +24,8 @@ export class PostService {
   getPostDetail(id: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
+
+  updatePost(id: string, body: any): Observable<any> {
+    return this.http.patch(`${this.baseUrl}/update/${id}`, body);
+  }
 }

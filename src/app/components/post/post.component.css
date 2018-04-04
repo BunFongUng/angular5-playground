@@ -6,3 +6,8 @@
 .action-icons-delete {
   color: red;
 }
+
+.action-icons-edit {
+  margin-left: 10px;
+  color: green;
+}

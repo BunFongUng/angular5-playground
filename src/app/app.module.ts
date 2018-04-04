@@ -15,7 +15,9 @@ import { PostService } from './services/post/post.service';
 
 // load env configs.
 import { environment } from '../environments/environment';
-import { PostFormComponent } from './components/post-form/post-form.component';
+
+// load routes
+import { appRoutes } from './routes/app.routes';
 
 // load components.
 import { AppComponent } from './app.component';
@@ -27,30 +29,7 @@ import { PostComponent } from './components/post/post.component';
 import { HomeComponent } from './components/home/home.component';
 import { TodoDetailComponent } from './components/todo-detail/todo-detail.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
-
-// app routes
-const appRoutes: Routes = [
-  {
-    path: 'todos',
-    component: TodosComponent
-  },
-  {
-    path: 'posts',
-    component: PostsComponent
-  },
-  {
-    path: '',
-    component: HomeComponent
-  },
-  {
-    path: 'todos/:id',
-    component: TodoDetailComponent
-  },
-  {
-    path: 'posts/:id',
-    component: PostDetailComponent
-  }
-];
+import { PostFormComponent } from './components/post-form/post-form.component';
 
 @NgModule({
   declarations: [

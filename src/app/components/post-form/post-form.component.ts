@@ -1,4 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { PostService } from '../../services/post/post.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-form',
@@ -13,15 +15,45 @@ export class PostFormComponent implements OnInit {
     title: null,
     link: null
   };
+  id: string;
 
-  constructor() {}
+  formEdit = false;
 
-  ngOnInit() {}
+  constructor(
+    private postService: PostService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    this.route.params.subscribe(param => {
+      if (param.id) {
+        this.id = param.id;
+        this.formEdit = true;
+        this.postService.getPostDetail(param.id).subscribe(res => {
+          if (res.status === 'success') {
+            const { title, link } = res.data;
+            this.post = { title, link };
+          }
+        });
+      }
+    });
+  }
 
   onFormSubmit({ value, valid }) {
     if (valid) {
-      this.createNewPost.emit(value);
-      this.formWasSubmitted.emit(false);
+      if (!this.formEdit) {
+        this.createNewPost.emit(value);
+        this.formWasSubmitted.emit(false);
+        return;
+      }
+
+      const body = value;
+      this.postService.updatePost(this.id, body).subscribe(res => {
+        if (res.status === 'success') {
+          this.router.navigate(['posts']);
+        }
+      });
     }
   }
 }
