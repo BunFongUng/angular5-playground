@@ -9,6 +9,14 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+// load services.
+import { TodoService } from './services/todo.service';
+import { PostService } from './services/post/post.service';
+
+// load env configs.
+import { environment } from '../environments/environment';
+import { PostFormComponent } from './components/post-form/post-form.component';
+
 // load components.
 import { AppComponent } from './app.component';
 import { TodosComponent } from './components/todos/todos.component';
@@ -17,14 +25,8 @@ import { TodoFormComponent } from './components/todo-form/todo-form.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { PostComponent } from './components/post/post.component';
 import { HomeComponent } from './components/home/home.component';
-
-// load services.
-import { TodoService } from './services/todo.service';
-import { PostService } from './services/post/post.service';
-
-// load env configs.
-import { environment } from '../environments/environment';
-import { PostFormComponent } from './components/post-form/post-form.component';
+import { TodoDetailComponent } from './components/todo-detail/todo-detail.component';
+import { PostDetailComponent } from './components/post-detail/post-detail.component';
 
 // app routes
 const appRoutes: Routes = [
@@ -39,6 +41,14 @@ const appRoutes: Routes = [
   {
     path: '',
     component: HomeComponent
+  },
+  {
+    path: 'todos/:id',
+    component: TodoDetailComponent
+  },
+  {
+    path: 'posts/:id',
+    component: PostDetailComponent
   }
 ];
 
@@ -51,7 +61,9 @@ const appRoutes: Routes = [
     PostsComponent,
     PostComponent,
     PostFormComponent,
-    HomeComponent
+    HomeComponent,
+    TodoDetailComponent,
+    PostDetailComponent
   ],
   imports: [
     BrowserModule,

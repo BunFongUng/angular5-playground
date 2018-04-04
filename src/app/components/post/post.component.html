@@ -3,7 +3,7 @@
 </td>
 
 <td class="text-center">
-  {{ post.title }}
+  <a [routerLink]="['/posts', post._id]">{{ post.title }}</a>
 </td>
 
 <td class="text-center">
